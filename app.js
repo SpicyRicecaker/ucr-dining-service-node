@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
 
 app.get("/lothian", async (req, res) => {
   const r = await fetch(
-    "https://foodpro.ucr.edu/foodpro/shortmenu.asp?sName=University%20of%20California%2C%20Riverside%20Dining%20Services&locationNum=03&locationName=Lothian&naFlag=1"
+    "https://foodpro.ucr.edu/foodpro/shortmenu.asp?sName=University+of+California%2C+Riverside+Dining+Services&locationNum=02&locationName=Lothian+Residential+Restaurant&naFlag=1"
   );
   res.set({ "Access-Control-Allow-Origin": "*" });
   res.type("html").send(await r.text());
