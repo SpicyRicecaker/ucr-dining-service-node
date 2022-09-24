@@ -2,10 +2,27 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.get("/", (req, res) => res.type('html').send(html));
+app.get("/", (req, res) => {
+  res.type("html").send(html);
+});
+
+app.get("/lothian", async (req, res) => {
+  const r = await fetch(
+    "https://foodpro.ucr.edu/foodpro/shortmenu.asp?sName=University%20of%20California%2C%20Riverside%20Dining%20Services&locationNum=03&locationName=Lothian&naFlag=1"
+  );
+  res.set({ "Access-Control-Allow-Origin": "*" });
+  res.type("html").send(await r.text());
+});
+
+app.get("/glasgow", async (req, res) => {
+  const r = await fetch(
+    "https://foodpro.ucr.edu/foodpro/shortmenu.asp?sName=University%20of%20California%2C%20Riverside%20Dining%20Services&locationNum=03&locationName=Glasgow&naFlag=1"
+  );
+  res.set({ "Access-Control-Allow-Origin": "*" });
+  res.type("html").send(await r.text());
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
 
 const html = `
 <!DOCTYPE html>
@@ -56,4 +73,4 @@ const html = `
     </section>
   </body>
 </html>
-`
+`;
